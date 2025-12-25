@@ -4,8 +4,7 @@ import Logo from "@/public/images/logo.svg";
 import { APP_NAME } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, UserIcon } from "lucide-react";
-
-console.log(Logo);
+import ThemeToggler from "@/components/Theme/ThemeToggler";
 
 const Header = () => {
   return (
@@ -26,13 +25,14 @@ const Header = () => {
           </Link>
         </div>
         <div className="space-x-2">
+          <ThemeToggler />
           {/* asChild is a prop that lets a shadcn component render another element instead of its default one, without losing styles or behavior. */}
           <Button asChild variant="ghost">
             <Link href={"/cart"}>
               <ShoppingCart /> cart
             </Link>
           </Button>
-          <Button asChild variant="ghost">
+          <Button asChild>
             <Link href={"/sign-in"}>
               <UserIcon /> Sign In
             </Link>
