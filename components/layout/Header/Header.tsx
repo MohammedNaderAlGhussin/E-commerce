@@ -26,6 +26,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="space-x-2">
+          {/* asChild is a prop that lets a shadcn component render another element instead of its default one, without losing styles or behavior. */}
           <Button asChild variant="ghost">
             <Link href={"/cart"}>
               <ShoppingCart /> cart
