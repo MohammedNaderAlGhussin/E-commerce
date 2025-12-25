@@ -13,8 +13,7 @@ import { SunIcon, MoonIcon, SunMoon } from "lucide-react";
 import { useMounted } from "@/hooks/useMounted";
 
 const ThemeToggler = () => {
-    const { theme, setTheme } = useTheme();
-    
+  const { theme, setTheme } = useTheme();
   const mounted = useMounted();
 
   if (!mounted) return null;
