@@ -10,6 +10,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
+    //( %s gets other page titles beside | kaufra => Home | Kaufra)
     template: `%s | Kaufra`,
     default: APP_NAME,
   },
