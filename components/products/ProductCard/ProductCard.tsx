@@ -16,7 +16,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             height={300}
             width={300}
             priority={true}
-            className="w-fit"
+            className="w-[-webkit-fill-available]"
           />
         </Link>
       </CardHeader>
