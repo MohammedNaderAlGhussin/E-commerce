@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button";
+import ProductList from "@/components/products/ProductList/ProductList";
+import sampleData from "@/db/sample-data";
 
-export default function Home() {
-  return <Button className=" cursor-pointer mt-2">Click me</Button>;
+export default async function Home() {
+  return (
+    <ProductList data={sampleData.products} title="Newest Arrivals" limit={4} />
+  );
 }
