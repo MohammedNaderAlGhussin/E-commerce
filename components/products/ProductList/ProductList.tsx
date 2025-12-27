@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductListProps } from "./ProductList.types";
-import { Product } from "../Products.types";
+import { Product } from "@/types/product";
 import ProductCard from "../ProductCard/ProductCard";
 
 const ProductList = ({ data, title }: ProductListProps) => {

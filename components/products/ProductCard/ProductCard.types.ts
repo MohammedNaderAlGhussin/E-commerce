@@ -1,5 +1,5 @@
-import { Product } from "../Products.types"
+import { Product } from "@/types/product";
 
 export type ProductCardProps = {
-    product: Product
-}
+  product: Product;
+};
