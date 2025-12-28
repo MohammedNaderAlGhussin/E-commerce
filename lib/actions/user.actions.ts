@@ -3,10 +3,11 @@
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { signIn, signOut } from "../auth/auth";
 import { signInFormSchema } from "../validators/signIn";
+import { SignInFormState } from "@/types/signInFormState";
 
 // Sign in the user with credentials
 export async function signInWithCredentials(
-  prevState: unknown,
+  prevState: SignInFormState,
   formData: FormData
 ) {
   try {
