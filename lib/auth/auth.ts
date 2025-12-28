@@ -1,12 +1,12 @@
+import "dotenv/config";
 import NextAuth from "next-auth";
-import type { NextAuthConfig } from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compareSync } from "bcrypt-ts-edge";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import prisma from "../prisma";
 
-import { prisma } from "@/db/prisma";
-
-export const config = {
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: PrismaAdapter(prisma),
   pages: {
     signIn: "/sign-in",
     error: "/sign-in",
@@ -15,7 +15,6 @@ export const config = {
     strategy: "jwt" as const,
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
       credentials: {
@@ -76,6 +75,4 @@ export const config = {
         }
     */
   },
-} satisfies NextAuthConfig;
-
-export const { handlers, auth, signIn, signOut } = NextAuth(config);
+});
