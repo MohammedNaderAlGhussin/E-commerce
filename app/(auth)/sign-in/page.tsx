@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Metadata } from "next";
 import Link from "next/link";
+import CredentialsSignInForm from "./credentials-signin-form";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -27,7 +28,7 @@ const SignInPage = async () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* <CredentialsSignInForm /> */}
+          <CredentialsSignInForm />
         </CardContent>
       </Card>
     </div>
