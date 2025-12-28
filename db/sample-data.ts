@@ -1,4 +1,23 @@
+import { hashSync } from "bcrypt-ts-edge";
+/*
+ - 10 -> salt round which is a random value added to the password before hashing it to make it more sequre 
+  so even if two users have the same password, their hashed outputs are different 
+ */
 const sampleData = {
+  users: [
+    {
+      name: "Nader",
+      email: "admin@example.com",
+      password: hashSync("123456", 10),
+      role: "admin",
+    },
+    {
+      name: "Housam",
+      email: "user@example.com",
+      password: hashSync("123456", 10),
+      role: "user",
+    },
+  ],
   products: [
     {
       name: "Polo Sporting Stretch Shirt",
