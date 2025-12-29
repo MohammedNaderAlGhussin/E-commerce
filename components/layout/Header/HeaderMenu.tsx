@@ -7,8 +7,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { EllipsisVertical, ShoppingCart, UserIcon } from "lucide-react";
+import { EllipsisVertical, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import UserButton from "./UserButton";
 
 const HeaderMenu = () => {
   return (
@@ -20,11 +21,7 @@ const HeaderMenu = () => {
             <ShoppingCart /> Cart
           </Link>
         </Button>
-        <Button asChild>
-          <Link href={"/sign-in"}>
-            <UserIcon /> Sign In
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
       <nav className="md:hidden">
         <Sheet>
@@ -40,11 +37,7 @@ const HeaderMenu = () => {
                   <ShoppingCart /> Cart
                 </Link>
               </Button>
-              <Button asChild>
-                <Link href={"/sign-in"}>
-                  <UserIcon /> Sign In
-                </Link>
-              </Button>
+              <UserButton />
             </div>
             <SheetDescription></SheetDescription>
           </SheetContent>
