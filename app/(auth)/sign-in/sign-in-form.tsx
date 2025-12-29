@@ -12,7 +12,7 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
 const SignInForm = () => {
-  const [state, formAction] = useActionState<SignInFormState, FormData>(
+  const [data, formAction] = useActionState<SignInFormState, FormData>(
     signInWithCredentials,
     {
       success: false,
@@ -49,8 +49,8 @@ const SignInForm = () => {
           />
         </div>
         <SignInButton />
-        {state && !state.success && (
-          <div className="text-center text-destructive ">{state.message}</div>
+        {data && !data.success && (
+          <div className="text-center text-destructive ">{data.message}</div>
         )}
         <div className="text-sm text-center text-muted-foreground">
           Don&apos;t have an account?{" "}
