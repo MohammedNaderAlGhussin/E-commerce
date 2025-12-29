@@ -16,11 +16,42 @@ const UserButton = async () => {
 
   if (!session) {
     return (
-      <Button asChild>
-        <Link href="/sign-in">
-          <UserIcon /> Sign In
-        </Link>
-      </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div className="flex items-center">
+            <Button
+              variant="default"
+              className="relative w-8 h-8 rounded-full ml-2 flex items-center justify-center  cursor-pointer"
+            >
+              <UserIcon />
+            </Button>
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className="w-56 flex flex-col gap-1"
+          align="center"
+          forceMount
+        >
+          <DropdownMenuItem className="font-normal border-b pb-3">
+            <div className="flex flex-col space-y-1 gap-1">
+              <div className="text-sm font-medium leading-none">
+                <Link href="/sign-in">Sign In / Register</Link>
+              </div>
+            </div>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <Link href="/sign-in" className="w-full">
+              User Profile
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href="/sign-in" className="w-full">
+              Order History
+            </Link>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     );
   }
 
@@ -32,7 +63,7 @@ const UserButton = async () => {
         <DropdownMenuTrigger asChild>
           <div className="flex items-center">
             <Button
-              variant="ghost"
+              variant="default"
               className="relative w-8 h-8 rounded-full ml-2 flex items-center justify-center  cursor-pointer"
             >
               {firstInitial}
@@ -41,7 +72,7 @@ const UserButton = async () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           className="w-56 flex flex-col gap-1"
-          align="end"
+          align="center"
           forceMount
         >
           <DropdownMenuLabel className="font-normal">
