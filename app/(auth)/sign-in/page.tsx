@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/card";
 import { Metadata } from "next";
 import Link from "next/link";
-import CredentialsSignInForm from "./credentials-signin-form";
 import { auth } from "@/lib/auth/auth";
 import { redirect } from "next/navigation";
+import SignInForm from "./sign-in-form";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -24,7 +24,7 @@ type SignInPageProps = {
 
 const SignInPage = async (props: SignInPageProps) => {
   const { callbackUrl } = await props.searchParams;
-    
+
   const session = await auth();
 
   if (session) {
@@ -43,7 +43,7 @@ const SignInPage = async (props: SignInPageProps) => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <CredentialsSignInForm />
+          <SignInForm />
         </CardContent>
       </Card>
     </div>
