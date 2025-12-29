@@ -6,6 +6,7 @@ import { signInFormSchema, signUpFormSchema } from "../validators/auth";
 import { SignInFormState, SignUpFormState } from "@/types/auth";
 import { hashSync } from "bcrypt-ts-edge";
 import prisma from "../prisma";
+import { formatError } from "../utils";
 
 // Sign in the user with credentials
 export async function signInWithCredentials(
@@ -69,6 +70,6 @@ export async function signUpUser(
     if (isRedirectError(error)) {
       throw error;
     }
-    return { success: false, message: "User was not registered" };
+    return { success: false, message: formatError(error) };
   }
 }
