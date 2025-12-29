@@ -3,8 +3,13 @@ export type SignInFormState = {
   message: string;
 };
 
-
 export type SignUpFormState = {
   success: boolean;
-  message: string;
+  fieldErrors?: {
+    name?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  };
+  message?: string; // optional global error
 };
