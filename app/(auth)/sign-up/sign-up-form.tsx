@@ -27,45 +27,57 @@ const SignUpForm = () => {
     <form action={formAction}>
       <input type="hidden" name="callbackUrl" value={callbackUrl} />
       <div className="space-y-6">
-        <div className="flex flex-col gap-3">
-          <Label htmlFor="email">Name</Label>
-          <Input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            defaultValue={signUpDefaultValues.name}
-          />
+        <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="email">Name</Label>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              defaultValue={signUpDefaultValues.name}
+            />
+          </div>
+          <FieldError error={data.fieldErrors?.name} />
         </div>
-        <div className="flex flex-col gap-3">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            name="email"
-            type="text"
-            autoComplete="email"
-            defaultValue={signUpDefaultValues.email}
-          />
+        <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              type="text"
+              autoComplete="email"
+              defaultValue={signUpDefaultValues.email}
+            />
+          </div>
+          <FieldError error={data.fieldErrors?.email} />
         </div>
-        <div className="flex flex-col gap-3">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="password"
-            defaultValue={signUpDefaultValues.password}
-          />
+        <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="password"
+              defaultValue={signUpDefaultValues.password}
+            />
+          </div>
+          <FieldError error={data.fieldErrors?.password} />
         </div>
-        <div className="flex flex-col gap-3">
-          <Label htmlFor="confirmPassword">Confirm Password</Label>
-          <Input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            autoComplete="confirmPassword"
-            defaultValue={signUpDefaultValues.confirnPassword}
-          />
+        <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-3">
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              autoComplete="confirmPassword"
+              defaultValue={signUpDefaultValues.confirnPassword}
+            />
+          </div>
+          <FieldError error={data.fieldErrors?.confirmPassword} />
         </div>
         <div>
           <SignUpButton />
@@ -98,6 +110,11 @@ const SignUpButton = () => {
       {pending ? "Submitting..." : "Sign Up"}
     </Button>
   );
+};
+
+const FieldError = ({ error }: { error?: string }) => {
+  if (!error) return null;
+  return <p className="text-sm text-destructive">{error}</p>;
 };
 
 export default SignUpForm;
