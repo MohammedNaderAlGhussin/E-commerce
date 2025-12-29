@@ -23,7 +23,7 @@ const ThemeToggler = () => {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full cursor-pointer"
         >
           {theme === "system" ? (
             <SunMoon />
