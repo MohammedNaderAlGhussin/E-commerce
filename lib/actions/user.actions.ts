@@ -1,13 +1,15 @@
 "use server";
 
 import { isRedirectError } from "next/dist/client/components/redirect-error";
-import { signIn, signOut } from "../auth/auth";
+import { auth, signIn, signOut } from "../auth/auth";
 import { signInFormSchema, signUpFormSchema } from "../validators/auth";
 import { SignInFormState, SignUpFormState } from "@/types/auth";
 import { hashSync } from "bcrypt-ts-edge";
 import prisma from "../prisma";
 import { formatError } from "../utils";
 import { ZodError } from "zod";
+import { shippingAddressSchema } from "../validators/shipping-adress";
+import { ShippingAddress } from "@/types/shipping-adress";
 
 // Sign in the user with credentials
 export async function signInWithCredentials(
@@ -82,4 +84,13 @@ export async function signUpUser(
       message: formatError(error),
     };
   }
+}
+
+// Get user by the ID
+export async function getUserById(userID: string) {
+  const user = await prisma.user.findFirst({
+    where: { id: userID },
+  });
+  if (!user) throw new Error("User was not found!");
+  return user;
 }
