@@ -22,7 +22,11 @@ import {
 } from "@/components/ui/form";
 import { updateUserAddress } from "@/lib/actions/user.actions";
 
-const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
+type ShippingAddressFormProps = {
+  address: ShippingAddress;
+};
+
+const ShippingAddressForm = ({ address }: ShippingAddressFormProps) => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof shippingAddressSchema>>({
