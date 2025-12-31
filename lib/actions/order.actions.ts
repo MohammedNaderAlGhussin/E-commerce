@@ -1,6 +1,6 @@
 "use server";
 
-import { formatError } from "../utils";
+import { convertToPlainObject, formatError } from "../utils";
 import { getMyCart } from "./cart.actions";
 import { getUserById } from "./user.actions";
 import { insertOrderSchema } from "../validators/order";
@@ -8,6 +8,8 @@ import { CartItem } from "@/types/cart";
 import { auth } from "../auth/auth";
 import prisma from "../prisma";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
+import { ShippingAddress } from "@/types/shipping-adress";
+import { Order } from "@/types/order";
 
 // Create order and create the order items
 export async function createOrder() {
@@ -86,8 +88,8 @@ export async function createOrder() {
       return insertedOrder.id;
     });
 
-      if (!insertedOrderId) throw new Error("Order not created");
-      
+    if (!insertedOrderId) throw new Error("Order not created");
+
     return {
       success: true,
       message: "Order created",
@@ -97,4 +99,30 @@ export async function createOrder() {
     if (isRedirectError(error)) throw error;
     return { success: false, message: formatError(error) };
   }
+}
+
+// Get order by id
+export async function getOrderById(orderId: string): Promise<Order | null> {
+  const data = await prisma.order.findFirst({
+    where: { id: orderId },
+    include: {
+      orderitems: true,
+      user: { select: { name: true, email: true } },
+    },
+  });
+
+  if (!data) return null;
+
+  return convertToPlainObject({
+    ...data,
+    itemsPrice: Number(data.itemsPrice),
+    shippingPrice: Number(data.shippingPrice),
+    taxPrice: Number(data.taxPrice),
+    totalPrice: Number(data.totalPrice),
+    shippingAddress: data.shippingAddress as ShippingAddress,
+    orderitems: data.orderitems.map((item) => ({
+      ...item,
+      price: Number(item.price),
+    })),
+  });
 }
