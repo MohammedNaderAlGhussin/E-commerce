@@ -11,6 +11,7 @@ import z, { ZodError } from "zod";
 import { shippingAddressSchema } from "../validators/shipping-adress";
 import { ShippingAddress } from "@/types/shipping-adress";
 import { paymentMethodSchema } from "../validators/payment";
+import { redirect } from "next/navigation";
 
 // Sign in the user with credentials
 export async function signInWithCredentials(
@@ -37,6 +38,7 @@ export async function signInWithCredentials(
 // Sign user out
 export async function signOutUser() {
   await signOut();
+  redirect("/");
 }
 
 // Sign up user
