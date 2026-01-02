@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth-guard";
 import { getAllOrders } from "@/lib/actions/order.actions";
-import Pagination from "@/components/pagination/Pagination";
+import Pagination from "@/components/shared/pagination/Pagination";
 
 export const metadata: Metadata = {
   title: "Admin Orders",
