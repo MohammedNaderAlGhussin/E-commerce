@@ -1,13 +1,10 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { formUrlQuery } from "@/lib/utils";
+import { PaginationProps } from "./Pagination.types";
 
-type PaginationProps = {
-  page: number | string;
-  totalPages: number;
-  urlParamName?: string;
-};
+
 
 const Pagination = ({ page, totalPages, urlParamName }: PaginationProps) => {
   const router = useRouter();
