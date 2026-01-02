@@ -13,6 +13,8 @@ import { Order } from "@/types/order";
 import { paypal } from "../paypal";
 import { revalidatePath } from "next/cache";
 import { PaymentResult } from "@/types/payment";
+import { PAGE_SIZE } from "../constants";
+import { redirect } from "next/navigation";
 
 // Create order and create the order items
 export async function createOrder() {
@@ -279,4 +281,37 @@ export async function updateOrderToPaid({
   //       paymentResult: updatedOrder.paymentResult as PaymentResult,
   //     },
   //   });
+}
+
+// Get user's orders
+export async function getMyOrders({
+  limit = PAGE_SIZE,
+  page,
+}: {
+  limit?: number;
+  page: number;
+}) {
+  const session = await auth();
+  if (!session?.user) {
+    redirect("/");
+  }
+
+  const data = await prisma.order.findMany({
+    where: { userId: session?.user?.id },
+    orderBy: { createdAt: "desc" },
+    take: limit,
+    skip: (page - 1) * limit,
+  });
+
+  const dataCount = await prisma.order.count({
+    where: { userId: session?.user?.id },
+  });
+
+  return {
+    data: data.map((order) => ({
+      ...order,
+      totalPrice: Number(order.totalPrice),
+    })),
+    totalPages: Math.ceil(dataCount / limit),
+  };
 }
