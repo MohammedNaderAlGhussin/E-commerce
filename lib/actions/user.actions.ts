@@ -11,7 +11,7 @@ import z, { ZodError } from "zod";
 import { shippingAddressSchema } from "../validators/shipping-adress";
 import { ShippingAddress } from "@/types/shipping-adress";
 import { paymentMethodSchema } from "../validators/payment";
-import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 // Sign in the user with credentials
 export async function signInWithCredentials(
@@ -38,7 +38,7 @@ export async function signInWithCredentials(
 // Sign user out
 export async function signOutUser() {
   await signOut();
-  redirect("/");
+  toast.success("logged out succussfully");
 }
 
 // Sign up user
@@ -164,7 +164,7 @@ export async function updateProfile(user: { name: string; email: string }) {
       },
     });
 
-    if (!currentUser) throw new Error('User not found');
+    if (!currentUser) throw new Error("User not found");
 
     await prisma.user.update({
       where: {
@@ -177,7 +177,7 @@ export async function updateProfile(user: { name: string; email: string }) {
 
     return {
       success: true,
-      message: 'User updated successfully',
+      message: "User updated successfully",
     };
   } catch (error) {
     return { success: false, message: formatError(error) };
