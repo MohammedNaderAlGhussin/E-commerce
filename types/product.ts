@@ -6,3 +6,13 @@ export type Product = z.infer<typeof insertProductSchema> & {
   rating: number;
   createdAt: Date;
 };
+
+export type GetAllProducts = {
+  query: string;
+  limit?: number;
+  page: number;
+  category?: string;
+  price?: string;
+  rating?: string;
+  sort?: string;
+};
