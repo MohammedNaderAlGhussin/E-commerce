@@ -6,9 +6,11 @@ import { LATEST_PRODUCTS_LIMIT, PAGE_SIZE } from "../constants";
 import { GetAllProducts } from "@/types/product";
 import { revalidatePath } from "next/cache";
 import { formatError } from "../utils";
-import { insertProductSchema, updateProductSchema } from "../validators/product";
+import {
+  insertProductSchema,
+  updateProductSchema,
+} from "../validators/product";
 import z from "zod";
-
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
@@ -131,7 +133,6 @@ export async function deleteProduct(id: string) {
   }
 }
 
-
 // Create a product
 export async function createProduct(data: z.infer<typeof insertProductSchema>) {
   try {
@@ -149,7 +150,6 @@ export async function createProduct(data: z.infer<typeof insertProductSchema>) {
   }
 }
 
-
 // Update a product
 export async function updateProduct(data: z.infer<typeof updateProductSchema>) {
   try {
@@ -158,18 +158,18 @@ export async function updateProduct(data: z.infer<typeof updateProductSchema>) {
       where: { id: product.id },
     });
 
-    if (!productExists) throw new Error('Product not found');
+    if (!productExists) throw new Error("Product not found");
 
     await prisma.product.update({
       where: { id: product.id },
       data: product,
     });
 
-    revalidatePath('/admin/products');
+    revalidatePath("/admin/products");
 
     return {
       success: true,
-      message: 'Product updated successfully',
+      message: "Product updated successfully",
     };
   } catch (error) {
     return { success: false, message: formatError(error) };
