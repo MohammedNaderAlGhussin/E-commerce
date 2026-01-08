@@ -2,10 +2,10 @@ import { z } from "zod";
 import { formatNumberWithDecimal } from "../utils";
 
 // Ensures that price has the correct format
-export const currency = z
+export const currency = z.coerce
   .number()
   .refine(
-    (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(Number(value))),
+    (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimal(value)),
     "Price must have exactly two decimal places"
   );
 
@@ -16,7 +16,7 @@ export const insertProductSchema = z.object({
   category: z.string().min(3, "Category must be at least 3 characters"),
   brand: z.string().min(3, "Brand must be at least 3 characters"),
   description: z.string().min(3, "Description must be at least 3 characters"),
-  stock: z.preprocess((v) => Number(v), z.number()),
+  stock: z.coerce.number().int().min(0),
   images: z.array(z.string()).min(1, "Product must have at least one image"),
   isFeatured: z.boolean(),
   banner: z.string().nullable(),
@@ -26,4 +26,8 @@ export const insertProductSchema = z.object({
 // Schema for updating products
 export const updateProductSchema = insertProductSchema.extend({
   id: z.string().min(1, "Id is required"),
+});
+
+export const productFormSchema = insertProductSchema.extend({
+  id: z.string().optional(),
 });
