@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { updateProfile } from "@/lib/actions/user.actions";
-import { updateProfileSchema } from "@/lib/validators/userProfile";
+import { updateProfileSchema } from "@/lib/validators/user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
