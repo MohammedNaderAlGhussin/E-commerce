@@ -42,14 +42,7 @@ export const productDefaultValues = {
   numReviews: "0",
   isFeatured: false,
   banner: null,
-  // name: "",
-  // slug: "",
-  // category: "",
-  // images: [],
-  // brand: "",
-  // description: "",
-  // price: 0,
-  // stock: 0,
-  // isFeatured: false,
-  // banner: null,
 };
+export const USER_ROLES = process.env.USERS_ROLES
+  ? process.env.USERS_ROLES.split(",")
+  : ["admin", "user"];
