@@ -2,6 +2,7 @@ import Link from "next/link";
 import MainNav from "./main-nav";
 import HeaderMenu from "@/components/layout/Header/HeaderMenu";
 import Logo from "@/components/layout/Header/Logo";
+import AdminSearch from "@/components/admin/AdminSearch";
 
 export default function AdminLayout({
   children,
@@ -18,6 +19,7 @@ export default function AdminLayout({
             </Link>
             <MainNav className="mx-6" />
             <div className="ml-auto items-center flex space-x-4">
+              <AdminSearch />
               <HeaderMenu />
             </div>
           </div>
