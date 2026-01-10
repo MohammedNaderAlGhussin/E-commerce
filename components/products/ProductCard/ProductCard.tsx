@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProductCardProps } from "./ProductCard.types";
 import ProductPrice from "../ProductPrice/ProductPrice";
+import Rating from "../Rating/Rating";
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
@@ -26,7 +27,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <h2 className="text-sm font-medium">{product.name}</h2>
         </Link>
         <div className="flex-between gap-4">
-          <p>{product.rating} Stars</p>
+          <Rating value={Number(product.rating)} />
           {product.stock > 0 ? (
             <ProductPrice value={Number(product.price)} className={``} />
           ) : (
