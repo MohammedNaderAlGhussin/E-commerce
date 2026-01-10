@@ -3,6 +3,7 @@ import HeaderMenu from "./HeaderMenu";
 import Logo from "./Logo";
 import Link from "next/link";
 import CategoryDrawer from "./CategoryDrawer";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -16,6 +17,9 @@ const Header = () => {
               {APP_NAME}
             </span>
           </Link>
+        </div>
+        <div className="hidden md:block">
+          <Search />
         </div>
         <HeaderMenu />
       </div>
