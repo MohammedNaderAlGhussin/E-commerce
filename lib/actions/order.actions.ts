@@ -16,6 +16,7 @@ import { PaymentResult } from "@/types/payment";
 import { PAGE_SIZE } from "../constants";
 import { redirect } from "next/navigation";
 import { Prisma } from "@/app/generated/prisma/client";
+import { sendPurchaseReceipt } from "@/email";
 
 // Create order and create the order items
 export async function createOrder() {
@@ -275,13 +276,20 @@ export async function updateOrderToPaid({
 
   if (!updatedOrder) throw new Error("Order not found");
 
-  //   sendPurchaseReceipt({
-  //     order: {
-  //       ...updatedOrder,
-  //       shippingAddress: updatedOrder.shippingAddress as ShippingAddress,
-  //       paymentResult: updatedOrder.paymentResult as PaymentResult,
-  //     },
-  //   });
+  sendPurchaseReceipt({
+    order: {
+      ...updatedOrder,
+      itemsPrice: Number(order.itemsPrice),
+      taxPrice: Number(order.taxPrice),
+      shippingPrice: Number(order.shippingPrice),
+      totalPrice: Number(order.totalPrice),
+      shippingAddress: updatedOrder.shippingAddress as ShippingAddress,
+      orderitems: order.orderitems.map((item) => ({
+        ...item,
+        price: Number(item.price),
+      })),
+    },
+  });
 }
 
 // Get user's orders
