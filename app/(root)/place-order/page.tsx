@@ -102,7 +102,9 @@ const PlaceOrderPage = async () => {
                             width={50}
                             height={50}
                           />
-                          <span className="px-2">{item.name}</span>
+                          <span className="px-2">
+                            {item.name.slice(0, 17)}...
+                          </span>
                         </Link>
                       </TableCell>
                       <TableCell>
