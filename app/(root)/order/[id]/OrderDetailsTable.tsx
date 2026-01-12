@@ -196,7 +196,10 @@ const OrderDetailsTable = ({
                             width={50}
                             height={50}
                           />
-                          <span className="px-2">{item.name}</span>
+                          <span className="px-2">
+                            {" "}
+                            {item.name.slice(0, 19)}...
+                          </span>
                         </Link>
                       </TableCell>
                       <TableCell>
