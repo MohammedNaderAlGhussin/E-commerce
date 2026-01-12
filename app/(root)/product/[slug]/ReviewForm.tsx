@@ -92,7 +92,11 @@ const ReviewForm = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <Button onClick={handleOpenForm} variant="default">
+      <Button
+        onClick={handleOpenForm}
+        variant="default"
+        className=" block mx-auto md:inline md:mx-0"
+      >
         Write a Review
       </Button>
       <DialogContent className="sm:max-w-106.25">

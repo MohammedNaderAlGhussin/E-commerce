@@ -100,7 +100,7 @@ const ProductDetailsPage = async (props: ProductDetailsPageProps) => {
         </div>
       </section>
       <section className="mt-10">
-        <h2 className="h2-bold mb-5">Customer Reviews</h2>
+        <h2 className="h2-bold mb-5 w-fit mx-auto md:mx-0">Customer Reviews</h2>
         <ReviewList
           userId={userId || ""}
           productId={product.id}
