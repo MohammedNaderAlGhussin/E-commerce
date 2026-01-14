@@ -19,6 +19,7 @@ import {
 import Image from "next/image";
 import { formatCurrency } from "@/lib/utils";
 import PlaceOrderForm from "./PlaceOrderForm";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Place Order",
@@ -30,7 +31,10 @@ const PlaceOrderPage = async () => {
   const userId = session?.user?.id;
 
   if (!session?.user) {
-    redirect("/sign-in");
+    const headersList = headers();
+    const pathname = (await headersList).get("x-pathname") || "/place-order";
+
+    redirect(`/sign-in?callbackUrl=${encodeURIComponent(pathname)}`);
   }
 
   if (!userId) throw new Error("User not found");
