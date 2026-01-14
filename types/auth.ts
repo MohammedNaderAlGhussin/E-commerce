@@ -5,11 +5,17 @@ export type SignInFormState = {
 
 export type SignUpFormState = {
   success: boolean;
+  message?: string;
   fieldErrors?: {
     name?: string;
     email?: string;
     password?: string;
     confirmPassword?: string;
   };
-  message?: string; // optional global error
+  values?: {
+    name?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  };
 };
