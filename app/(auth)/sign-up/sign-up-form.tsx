@@ -9,6 +9,7 @@ import { useFormStatus } from "react-dom";
 import { signUpUser } from "@/lib/actions/user.actions";
 import { useSearchParams } from "next/navigation";
 import { SignUpFormState } from "@/types/auth";
+import PasswordInput from "../Password";
 
 const SignUpForm = () => {
   const [data, formAction] = useActionState<SignUpFormState, FormData>(
@@ -53,10 +54,9 @@ const SignUpForm = () => {
         <div className="flex flex-col gap-1">
           <div className="flex flex-col gap-3">
             <Label htmlFor="password">Password</Label>
-            <Input
+            <PasswordInput
               id="password"
               name="password"
-              type="password"
               autoComplete="password"
               defaultValue={data.values?.password ?? ""}
             />
@@ -66,10 +66,9 @@ const SignUpForm = () => {
         <div className="flex flex-col gap-1">
           <div className="flex flex-col gap-3">
             <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <Input
+            <PasswordInput
               id="confirmPassword"
               name="confirmPassword"
-              type="password"
               autoComplete="confirmPassword"
               defaultValue={data.values?.confirmPassword ?? ""}
             />

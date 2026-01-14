@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import PasswordInput from "../Password";
 
 const SignInForm = () => {
   const [data, formAction] = useActionState<SignInFormState, FormData>(
@@ -39,11 +40,9 @@ const SignInForm = () => {
         </div>
         <div className="flex flex-col gap-3">
           <Label htmlFor="password">Password</Label>
-          <Input
+          <PasswordInput
             id="password"
             name="password"
-            type="password"
-            required
             autoComplete="password"
             defaultValue={signInDefaultValues.password}
           />
