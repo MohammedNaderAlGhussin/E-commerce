@@ -94,7 +94,7 @@ Kaufra/
 
 ### 🔐 **Authentication (NextAuth)**
 
-You are using **NextAuth** with:
+Using **NextAuth** with:
 
 ✔ **Credentials Provider** (Email + Password)
 ✔ **Encrypted passwords via bcrypt**
@@ -258,17 +258,6 @@ Supports migrations & seeding for development.
 
 ---
 
-# 🧪 **Testing**
-
-Uses **Jest** specifically for validating:
-
-- PayPal token generation
-- Payment verification flows
-
-Testing is intentionally minimal to avoid over-complexity.
-
----
-
 # 🧰 **Developer Experience**
 
 ✔ TypeScript-first codebase
@@ -317,10 +306,6 @@ This project successfully demonstrates:
 # ⚠️ **Challenges & Insights**
 
 While building this platform, notable challenges included:
-
-🧩 **Dependency Compatibility**
-
-- React 19 & Next 16 adoption required using `--legacy-peer-deps` due to missing peer updates.
 
 🔐 **Credential Flow with NextAuth**
 
