@@ -73,10 +73,10 @@ Kaufra/
 
 ```
 
-- **Public store pages are inside** `(root)`
-- **Auth pages live in** `(auth)`
-- **Admin section has its dedicated layout, routes & navigation**
-- **API routes handle auth, uploads, & webhooks server-side**
+- **Public store pages are inside** `(root)` 👍
+- **Auth pages live in** `(auth)`👍
+- **Admin section has its dedicated layout, routes & navigation** 👍
+- **API routes handle auth, uploads, & webhooks server-side** 👍
 
 ---
 
@@ -96,13 +96,13 @@ Kaufra/
 
 You are using **NextAuth** with:
 
-#### ✔ **Credentials Provider** (Email + Password)
+- **Credentials Provider** (Email + Password)
 
-#### ✔ **Encrypted passwords via bcrypt**
+- **Encrypted passwords via bcrypt**
 
-#### ✔ **Sessions handled using Cookies + JWT**
+- **Sessions handled using Cookies + JWT**
 
-#### ✔ **Role-based Authorization (Admin/User)**
+- **Role-based Authorization (Admin/User)**
 
 Additional future-ready providers supported in codebase:
 
@@ -120,15 +120,15 @@ Additional future-ready providers supported in codebase:
 
 Protected via roles & middleware with capabilities:
 
-#### ✔ **Manage Orders & Status**
+- **Manage Orders & Status**
 
-#### ✔ **Manage Products (CRUD)**
+- **Manage Products (CRUD)**
 
-#### ✔ **Manage Users & Roles**
+- **Manage Users & Roles**
 
-#### ✔ **Admin Analytics + Revenue Charts** (Recharts)
+- **Admin Analytics + Revenue Charts** (Recharts)
 
-#### ✔ **Upload product images via UploadThing**
+- **Upload product images via UploadThing**
 
 ### 💳 **Payments**
 
@@ -157,13 +157,13 @@ Using **React Email + Resend** for transactional emails:
 
 Built with modern UI tooling:
 
-#### ✔ **ShadCN UI** (Composable components)
+- **ShadCN UI** (Composable components)
 
-#### ✔ **Tailwind CSS**
+- **Tailwind CSS**
 
-#### ✔ **Lucide Icons**
+- **Lucide Icons**
 
-#### ✔ **Embla Carousel** (Featured products slider)
+- **Embla Carousel** (Featured products slider)
 
 ---
 
@@ -281,17 +281,17 @@ Testing is intentionally minimal to avoid over-complexity.
 
 # 🧰 **Developer Experience**
 
-#### ✔ TypeScript-first codebase
+- TypeScript-first codebase
 
-#### ✔ Prisma type-safety to DB layer
+- Prisma type-safety to DB layer
 
-#### ✔ Zod validation on inputs
+- Zod validation on inputs
 
-#### ✔ ESLint formatting & linting
+- ESLint formatting & linting
 
-#### ✔ RHF for form management
+- RHF for form management
 
-#### ✔ Strict mode compliant
+- Strict mode compliant
 
 ---
 
@@ -317,23 +317,23 @@ UPLOADTHING_SECRET=
 
 This project successfully demonstrates:
 
-#### ✔ Full-stack ecommerce architecture
+- Full-stack ecommerce architecture
 
-#### ✔ Real authentication & authorization
+- Real authentication & authorization
 
-#### ✔ Modern SSR/ISR patterns via Next.js 16
+- Modern SSR/ISR patterns via Next.js 16
 
-#### ✔ Admin dashboard with real CRUD flows
+- Admin dashboard with real CRUD flows
 
-#### ✔ Stripe + PayPal payment integration
+- Stripe + PayPal payment integration
 
-#### ✔ Dark/Light theme capabilities
+- Dark/Light theme capabilities
 
-#### ✔ Transactional email system
+- Transactional email system
 
-#### ✔ Cloud Postgres setup via Vercel/Neon
+- Cloud Postgres setup via Vercel/Neon
 
-#### ✔ Type-safe development environment
+- Type-safe development environment
 
 ---
 
